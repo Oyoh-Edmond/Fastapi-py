@@ -8,7 +8,6 @@ app = FastAPI()
 
 
 # create a Schema to restrict user input
-
 class Post(BaseModel):
     title: str
     content: str
@@ -19,7 +18,8 @@ class Post(BaseModel):
 my_posts = [{
     "title": "post 1", 
     "content": "content post 1",
-    "id": 1},{
+    "id": 1},
+    {
     "title": "food", 
     "content": "i love pizza",
     "id": 2
@@ -66,8 +66,8 @@ def create_posts(post: Post):
 #convert id to integer 
 
 @app.get("/posts/{id}")
-def get_posts(id):
-    post = find_post(int(id))
+def get_posts(id: int):
+    post = find_post(id)
     return{"post_detail": post} 
 
 
