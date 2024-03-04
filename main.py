@@ -26,10 +26,9 @@ my_posts = [{
     }]
 
 # to retrieve a post
-
 def find_post(id):
     for p in my_posts:
-        if p["id"] == id:
+        if p["id"] == id: 
             return p
 
 # @app.get("/")
@@ -64,11 +63,11 @@ def create_posts(post: Post):
 
 
 # get users post with id
+#convert id to integer 
 
 @app.get("/posts/{id}")
 def get_posts(id):
-    print(type(id))
-    post = find_post(id)
+    post = find_post(int(id))
     return{"post_detail": post} 
 
 
