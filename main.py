@@ -25,6 +25,13 @@ my_posts = [{
     "id": 2
     }]
 
+# to retrieve a post
+
+def find_post(id):
+    for p in my_posts:
+        if p["id"] == id:
+            return p
+
 # @app.get("/")
 # def greeting():
 #     return {"message": "Hello World"}
@@ -55,7 +62,15 @@ def create_posts(post: Post):
     my_posts.append(post_dict)
     return{"data": post_dict}
 
+
+# get users post with id
+
 @app.get("/posts/{id}")
 def get_posts(id):
-    print(id)
-    return{"post_detail": f"this is post {id}"}
+    print(type(id))
+    post = find_post(id)
+    return{"post_detail": post} 
+
+
+
+
