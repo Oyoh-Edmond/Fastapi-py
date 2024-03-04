@@ -27,3 +27,7 @@ How to send data to the body using postman then extract that data within the pat
 
 ## Schema
 >from pydantic import BaseModel 
+
+
+# Structure your API 
+FastApi read your code from top to bottom
