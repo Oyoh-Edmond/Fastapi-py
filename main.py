@@ -13,7 +13,7 @@ class Post(BaseModel):
     content: str
     published: bool = True
     rating: Optional[int] = None 
-    id: int
+
 
 my_posts = [{
     "title": "post 1", 
@@ -54,14 +54,17 @@ def find_post(id):
 # def get_post():
 #     return {"data": my_posts}
 
-@app.post("/posts")
+
+# Create a post 
+
+@app.post("/posts", status_code=status.HTTP_201_CREATED)
 def create_posts(post: Post): 
     post_dict = post.model_dump()
     post_dict['id'] = randrange(0, 1000000)
     my_posts.append(post_dict)
     return{"data": post_dict}
 
-
+# get recent post
 @app.get("/posts/latest")
 def get_latest_post():
     post = my_posts[len(my_posts)-1]
