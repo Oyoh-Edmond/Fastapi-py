@@ -71,7 +71,7 @@ def get_latest_post():
 # convert id to integer 
 # manipulate the response 
 @app.get("/posts/{id}")
-def get_posts(id: int, response: Response):
+def get_posts(id: int):
     post = find_post(id)
     if not post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
